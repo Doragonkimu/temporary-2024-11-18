@@ -1,3 +1,4 @@
+//追加ボタンを押すと
 document.getElementById('todo-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const todoInput = document.getElementById('todo-input');
@@ -11,11 +12,13 @@ document.getElementById('todo-form').addEventListener('submit', (event) => {
   }
 });
 
+//ローカルストレージに格納
 const getTodos = () => {
   const storedTodos = localStorage.getItem('todos');
   return storedTodos ? JSON.parse(storedTodos) : [];
 };
 
+//html要素を追加
 const displayTodos = () => {
   const todos = getTodos();
   const uncompletedTodoList = document.getElementById('uncompleted-todo-list');
@@ -33,6 +36,7 @@ const appendTodoCard = (todo, todoList) => {
     todoCard.classList.add('todo-completed');
   }
 
+//チェックボックス定義
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.checked = todo.completed;
@@ -57,6 +61,7 @@ const appendTodoCard = (todo, todoList) => {
     localStorage.setItem('todos', JSON.stringify(todos));
   });
 
+//削除ボタン
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-btn';
   deleteBtn.textContent = '削除';
